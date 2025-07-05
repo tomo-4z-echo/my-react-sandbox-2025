@@ -3,6 +3,7 @@ import { loadEnv } from 'vite'
 import react from '@vitejs/plugin-react-swc'
 import tailwindcss from '@tailwindcss/vite'
 import { visualizer } from "rollup-plugin-visualizer"
+import { fileURLToPath } from 'url'
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
@@ -36,18 +37,23 @@ export default defineConfig(({ mode }) => {
           assetFileNames: `assets/[name]-[hash].[ext]`,
           manualChunks(id) {
             if (id.includes("node_modules/react") || id.includes("node_modules/react-dom")) {
-              return "react-vendor";
+              return "react-vendor"
             }
             if (id.includes("node_modules")) {
-              const parts = id.split("node_modules/");
-              const packageName = parts[parts.length - 1].split("/")[0];  // パッケージ名を取得
+              const parts = id.split("node_modules/")
+              const packageName = parts[parts.length - 1].split("/")[0] // パッケージ名を取得
               if (["axios"].includes(packageName)) {
-                return `vendor-${packageName}`;
+                return `vendor-${packageName}`
               }
-              return "other-vendor";
+              return "other-vendor"
             }
           }
         }
+      }
+    },
+    resolve: {
+      alias: {
+        "@": fileURLToPath(new URL("./src", import.meta.url))
       }
     }
   }   

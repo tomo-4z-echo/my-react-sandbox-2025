@@ -1,6 +1,7 @@
 import { useReducer } from "react"
 // import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 // import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { Button } from "@/app/components/atoms"
 import { CodeUseReducer } from "../../codes/codes"
 
 // 環境確認
@@ -76,10 +77,10 @@ function Home() {
         <h2 className={"text-xl"}>useReducerを使用したカウンターについて</h2>
         <div className={"mt-4 p-4 border border-green-700 rounded-xl"}>
           <div className={"w-sm p-4 text-center bg-green-200 rounded-xl"} {...setTestId("count-display")}>{state.count}</div>
-          <div className={"mt-2"}>
-            <button type={"button"} onClick={() => dispatch(ActionCreators.reset(100))}>RESET</button>
-            <button type={"button"} onClick={() => dispatch(ActionCreators.decrement())}>-</button>
-            <button type={"button"} onClick={() => dispatch(ActionCreators.increment())}>+</button>
+          <div className={"flex mt-2 gap-1"}>
+            <Button mold={"back"} className={"gap-4"} onClick={() => dispatch(ActionCreators.reset(100))}>RESET</Button>
+            <Button mold={"confirm"} onClick={() => dispatch(ActionCreators.decrement())}>-</Button>
+            <Button mold={"confirm"} onClick={() => dispatch(ActionCreators.increment())}>+</Button>
           </div>
         </div>
         <p className={"mt-8 text-xs"}>

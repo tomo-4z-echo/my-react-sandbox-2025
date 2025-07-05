@@ -1,5 +1,5 @@
 import { Outlet } from "react-router"
-import { SideMenu } from "./components"
+import { SideMenu } from "./components/organisms"
 
 function App() {
   return (

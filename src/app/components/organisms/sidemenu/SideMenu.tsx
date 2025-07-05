@@ -3,7 +3,8 @@ import { Link } from "react-router";
 const menuList = [
   {id: 1, label: "Home", link: "/"},
   {id: 2, label: "About", link: "/about"},
-  {id: 3, label: "設計図", link: "/blueprint"}
+  {id: 3, label: "設計図", link: "/blueprint"},
+  {id: 4, label: "Git連携", link: "/git"}
 ]
 
 function SideMenu() {
